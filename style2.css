@@ -1,0 +1,404 @@
+/* --- Core Reset & Root --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(26, 27, 28);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animations Setup */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* --- Header & Desktop Layout --- */
+.header {
+    width: 100%;
+    height: 80px;
+    background: oklch(98.112% 0.00938 286.056 / 0.89);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header h2 {
+    font-size: 28px;
+    color: black;
+    font-family: Georgia, serif;
+    letter-spacing: 2px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li a {
+    font-size: 16px;
+    margin: 0 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: lightsalmon;
+}
+
+/* Hidden Switch Mechanism for pure CSS Drawer Sidebar */
+.menu-checkbox {
+    display: none;
+}
+
+#mobil {
+    display: none;
+    font-size: 26px;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#mobil:hover {
+    transform: scale(1.1);
+}
+
+/* --- Right Side Slideout Mobile Sidebar Menu --- */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden outside view initially */
+    width: 280px;
+    height: 100vh;
+    background: rgba(26, 27, 28, 0.98);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-sidebar .close-btn {
+    align-self: flex-end;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.mobile-sidebar .close-btn:hover {
+    color: rgb(205, 30, 59);
+}
+
+.mobile-sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mobile-sidebar ul li a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: padding-left 0.3s, color 0.3s;
+    display: block;
+}
+
+.mobile-sidebar ul li a:hover {
+    color: lightsalmon;
+    padding-left: 10px;
+}
+
+/* CSS rule checking state to trigger open drawer animation */
+.menu-checkbox:checked ~ .mobile-sidebar {
+    right: 0;
+}
+
+/* --- Responsive Split Banner Area --- */
+.banner {
+    width: 100%;
+    min-height: 550px;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('banner-3.jpg') center/cover no-repeat;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 8%;
+    gap: 30px;
+}
+
+.text {
+    flex: 1;
+    text-align: left;
+}
+
+.text h1 {
+    font-size: 45px;
+    font-family: Georgia, serif;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.text h2 {
+    font-size: 24px;
+    margin-top: 15px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+}
+
+.text button.btn-primary {
+    margin-top: 30px;
+    padding: 16px 45px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgb(205, 30, 59);
+    border: 2px solid transparent;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(205, 30, 59, 0.4);
+    transition: all 0.3s ease;
+}
+
+.text button.btn-primary:hover {
+    background: white;
+    color: rgb(205, 30, 59);
+    transform: translateY(-3px);
+}
+
+.img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.img img {
+    width: 100%;
+    max-width: 480px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Auto Responsive Product Section Grid --- */
+.container-grid-section {
+    width: 100%;
+    padding: 60px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* --- Cards Component UI --- */
+.card-img {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-img:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 25px rgb(205, 30, 59, 0.4);
+}
+
+.card-img img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+}
+
+.card-img:hover img {
+    transform: scale(1.02);
+}
+
+.card-img h1 {
+    color: rgb(205, 30, 59);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+}
+
+.card-img p {
+    margin-top: 10px;
+    color: #444;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.card-img h4 {
+    margin-top: 15px;
+    color: #111;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card-img button {
+    margin-top: 20px;
+    width: 100%;
+    height: 48px;
+    border: none;
+    background: rgb(205, 30, 59);
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.card-img button:hover {
+    background: #111;
+    transform: scale(1.02);
+}
+
+/* --- Semantic Modular Footer --- */
+footer {
+    background-color: #111;
+    color: white;
+    padding: 60px 0 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    gap: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 260px;
+}
+
+.footer-section h3 {
+    color: palevioletred;
+    margin-bottom: 25px;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.footer-section p {
+    color: #bbb;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s, padding-left 0.3s;
+    display: inline-block;
+}
+
+.footer-section ul li a:hover {
+    color: palevioletred;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    background-color: black;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #222;
+    font-size: 14px;
+    color: #888;
+}
+
+/* ==========================================================================
+   Media Queries For Absolute Responsiveness
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 5%;
+        min-height: auto;
+    }
+    .text {
+        text-align: center;
+    }
+    .text h1 { font-size: 38px; }
+    .img { width: 100%; }
+    .img img { max-width: 100%; height: 350px; }
+}
+
+@media (max-width: 768px) {
+    .header { padding: 0 20px; }
+    .navbar ul { display: none; } /* Hide standard horizontal navbar link row */
+    #mobil { display: block; }    /* Render mobile menu navigation button safely */
+    
+    .container-grid-section {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        padding: 40px 4%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h2 { font-size: 22px; }
+    .text h1 { font-size: 28px; }
+    .text h2 { font-size: 18px; }
+    .img img { height: 260px; }
+    .container-grid-section {
+        grid-template-columns: 1fr; /* Pure linear stack flow format on small viewport screen */
+    }
+}

@@ -1,0 +1,355 @@
+/* --- Global Resets & Animations Settings --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Load Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.animate-fade {
+    animation: fadeInUp 1s ease-in-out forwards;
+}
+
+/* --- Header & Navbar --- */
+.header {
+    width: 100%;
+    height: 80px;
+    background: oklch(98.112% 0.00938 286.056 / 0.89);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header h2 {
+    font-size: 28px;
+    color: black;
+    font-family: Georgia, serif;
+    letter-spacing: 2px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li a {
+    font-size: 16px;
+    margin: 0 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: lightsalmon;
+}
+
+#mobil {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* --- Hero Banner --- */
+.banner {
+    width: 100%;
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-7.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.banner h1 {
+    color: white;
+    font-size: 50px;
+    font-family: Georgia, serif;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.banner p {
+    color: ghostwhite;
+    font-size: 20px;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.btn-animate {
+    padding: 12px 35px;
+    font-family: Georgia, serif;
+    color: white;
+    background: rgb(150, 57, 57);
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-animate:hover {
+    background: white;
+    color: rgb(150, 57, 57);
+    transform: scale(1.05);
+}
+
+/* --- Common Layout Grids --- */
+.container, .container-dark, .container-gray, .container-dark-2 {
+    width: 100%;
+    padding: 60px 5%;
+}
+
+.container { background: gainsboro; }
+.container-dark { background: rgb(34, 26, 26); color: white; }
+.container-gray { background: gray; }
+.container-dark-2 { background: rgb(34, 32, 32); color: white; text-align: center; }
+
+.container h1, .container-dark h1, .container-dark-2 h1 {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.container p, .container-dark p, .container-dark-2 p.subtitle {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Responsive Responsive Grid Toolkit */
+.card-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+/* --- Cards Common Style --- */
+.card, .card-3, .card-4 {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    color: black;
+}
+
+.card:hover, .card-3:hover, .card-4:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 30px rgba(255, 160, 122, 0.5);
+}
+
+.card img, .card-3 img, .card-4 img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h1, .card-3 h2, .card-4 h1 {
+    font-size: 20px;
+    font-family: Georgia, serif;
+    margin-bottom: 10px;
+}
+
+.card-3 h2 { color: brown; }
+.card-4 h1 { color: rgb(188, 50, 50); }
+
+.card p, .card-3 p, .card-4 p {
+    font-size: 15px;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.card-4 p { color: #333; }
+
+.card button, .card-3 button, .card-4 button {
+    width: 100%;
+    padding: 12px;
+    color: beige;
+    background: brown;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.card button:hover, .card-3 button:hover, .card-4 button:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* --- Banner 2 Section --- */
+.banner-2 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 20px;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('banner-3.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+}
+
+.banner-2 h1 { font-size: 32px; color: bisque; font-family: Georgia, serif; }
+.banner-2 h2 { margin: 15px 0; font-family: Georgia, serif; font-size: 28px;}
+.banner-2 p { font-family: sans-serif; max-width: 500px; margin-bottom: 15px;}
+.banner-2 h3 { font-family: Georgia, serif; color: bisque; }
+
+/* --- Footer --- */
+footer {
+    background-color: #111;
+    color: white;
+    padding: 60px 0 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: palevioletred;
+    margin-bottom: 20px;
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+.footer-section p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.footer-section ul { list-style: none; }
+.footer-section ul li { margin-bottom: 10px; }
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-section ul li a:hover { color: palevioletred; }
+
+.footer-bottom {
+    background-color: black;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* ==========================================================================
+   Responsive Media Queries (Responsive Breakpoints for All Devices)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .banner h1 { font-size: 40px; }
+    .banner-2 { width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .header { padding: 0 20px; }
+    #mobil { display: block; color: black; }
+    
+    /* Responsive Toggle Menu Simulation (Stacking elements safely) */
+    .navbar ul {
+        display: none; /* Aap Isko JavaScript se click par toggle layout dynamic kar sakte hain */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Fallback displaying inline-flex or blocked items dynamically for basic CSS mobile view */
+    .navbar:hover ul { display: flex; } /* Hovering over navbar area unfolds menu on mobile fallback */
+    
+    .navbar ul li {
+        margin: 15px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .banner h1 { font-size: 32px; }
+    .banner p { font-size: 16px; }
+    
+    .card-grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .card img, .card-3 img, .card-4 img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid-4 {
+        grid-template-columns: 1fr; /* Mobile standard screen single straight column layout */
+    }
+    .header h2 { font-size: 22px; }
+    .banner h1 { font-size: 26px; }
+    .banner-2 h1 { font-size: 24px; }
+    .banner-2 h2 { font-size: 20px; }
+}
